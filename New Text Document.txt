@@ -1,0 +1,159 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0b0d0f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    color: #cbd5c5;
+    user-select: none;
+}
+.rpg-stage {
+    position: relative;
+    width: 900px;
+    height: 450px;
+    background: url('assets/background.png') no-repeat center center;
+    background-size: cover;
+    border:  4px solid #3e4a3f;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+.header-banner {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(16, 24, 18, 0.85);
+    border: 2px solid #6d8271;
+    padding: 6px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px #000;
+    z-index: 10;
+}
+
+.select-slot {
+    position: absolute;
+    bottom: 150px;
+    width: 110px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 5;
+    cursor: pointer;
+}
+
+.slot-rotate { left: 75px; }
+.slot-scale { left: 230px; }
+.slot-hori { left: 395px; }
+.slot-skew { left: 560px; }
+.slot-verti { left: 715px; }
+
+.sprite {
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    transition: transform 0.8s cubic-bezier(0.175, 0.865, 0.22, 1.7);
+}
+
+
+.slot-rotate:hover .sprite {transform: rotate(100deg);}
+.slot-scale:hover .sprite {transform: scale(100deg);}
+.slot-hori:hover .sprite {transform: hori(100deg);}
+.slot-skew:hover .sprite {transform: skew(100deg);}
+.slot-verti:hover .sprite {transform: verti(100deg);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 3: Transform Effects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="rpg-stage">
+
+        <div class="header-banner">Activity 3: Transform Effects</div>
+
+        <div class="select-slot slot-roate">
+            <img src="assets/rotate.png" alt="Drone" class="sprite">
+        </div>
+
+        <div class="select-slot slot-scale">
+        <img src="assets/scale.png" alt="Gnome" class="sprite">
+    </div>
+
+    <div class="select-slot slot-hori">
+        <img src="assets/hori.png" alt="Runner" class="sprite">
+    </div>
+
+    <div class="select-slot slot-skew">
+        <img src="assets/skew.png" alt="Soldier" class="sprite">
+    </div>
+    
+    <div class="select-slot slot-verti">
+        <img src="assets/verti.png" alt="Mech" class="sprite">
+    </div>
+
+    <div class="stats-card">
+        <div class="default-text">
+            <div class="char-name">System</div>
+            <div class="char-desc">Hover over a hero to manifest their unique layout canvas transform properties...</div>
+        </div>
+
+    <div class="data-text data-rotate">
+        <div class="char-name">Scout Drone || Class: Mechanic</div>
+        <div class="char-desc">Summons golems and deploys reconnaissance drones.</div>
+    </div>
+
+    <div class="data-text data-scale">
+        <div class="char-name">Cogsmith Gnome || Class: Engineer</div>
+        <div class="char-desc">Like an alchemist, he can craft powerful machinery and gadgets.</div>
+    </div>
+
+    <div class="data-text data-hori">
+        <div class="char-name">Chrono-Savant || Class: Speed-Mage</div>
+        <div class="char-desc">Speed as light, he can manipulate time and move at incredible velocities.</div>
+    </div>
+
+    <div class="data-text data-skew">
+        <div class="char-name">Cyber Vanguard || Class: Assault</div>
+        <div class="char-desc">With advanced cybernetic enhancements, he can infiltrate enemy and disable security protocols</div>
+    </div>
+
+    <div class="data-text data-verti">
+        <div class="char-name">Cyber Vanguard || Class: Tank</div>
+        <div class="char-desc"> A fromidable frontline unit with exceptional durability and combat capabilities.</div>
+    </div>
+    </div>
+
+    </div>
+</body>
+</html>
