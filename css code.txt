@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff0f5;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 40px;
+    color: #d63384;
+}
+
+p {
+    color: #555;
+}
+
+/* PARENT DIV */
+.products {
+    width: 90%;
+    height: 400px;
+    margin: 40px auto;
+
+    display: flex;
+    gap: 15px;
+}
+
+/* CHILD DIV */
+.product {
+    flex: 1;
+
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    transition: flex 0.5s ease;
+}
+
+.product .icon {
+    font-size: 60px;
+}
+
+.product h2 {
+    color: #d63384;
+}
+
+.product p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #d63384;
+    color: white;
+    cursor: pointer;
+}
+
+/* CLICKED CHILD */
+.product.active {
+    flex: 4;
+    background-color: #ffe0ec;
+}
+
+
+
+const products = document.querySelectorAll(".product");
+
+products.forEach(product => {
+
+    product.addEventListener("click", () => {
+
+        products.forEach(item => {
+            item.classList.remove("active");
+        });
+
+        product.classList.add("active");
+
+    });
+
+});
