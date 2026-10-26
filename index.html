@@ -1,140 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbie Surprise Box</title>
-<style>
-    body {
-        background: #ffe4f1;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 30px;
-    }
-    h1 {
-        color: #ff1493;
-    }
-    .container {
-        position: relative;
-        width: 250px;
-        height: 350px;
-        margin: 80px auto 20px;
-    }
-    #barbie {
-        position: absolute;
-        width: 150px;
-        height: 220px;
-        object-fit: contain;
-        left: 50px;
-        bottom: 100px;
-        opacity: 0;
-        transform: translateY(100px) rotate(0deg);
-        transition: opacity 0.5s;
-        z-index: 1;
-    }
-    #barbie.show {
-        opacity: 1;
-        animation: emerge 2s ease-out forwards,
-                   spin 3s linear 2s infinite;
-    }
-    .box {
-        position: absolute;
-        bottom: 0;
-        left: 25px;
-        width: 200px;
-        height: 120px;
-        background: #ff69b4;
-        border: 4px solid #ff1493;
-        border-radius: 8px;
-        box-sizing: border-box;
-        z-index: 2;
-        cursor: pointer;
-    }
-    .lid {
-        position: absolute;
-        bottom: 115px;
-        left: 15px;
-        width: 220px;
-        height: 35px;
-        background: #ff1493;
-        border-radius: 8px;
-        z-index: 3;
-        transform-origin: left ;
-        transition: transform 1s ease-in-out;
-        cursor: pointer;
-    }
-
-    .open .lid {
-        transform: translate(100px, -130px) rotateY(90deg) scale(1.1);
-    
-    }
-    .open .box {
-        background: #ff85c1;
-    }
-    button {
-        background: #ff1493;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        padding: 12px 25px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    @keyframes emerge {
-        from {
-            transform: translateY(100px) rotate(0deg);
-        }
-        to {
-            transform: translateY(-80px) rotate(360deg);
-        }
-    }
-    @keyframes spin {
-        from {
-            transform: translateY(-80px) rotateY(0deg);
-        }
-        to {
-            transform: translateY(-80px) rotateY(360deg);
-        }
-    }
-</style>
-</head>
+<html>
+    <head>
+       <title>DOM</title>
+       <style>
+            body {
+                font-famil:Arial, sans-serif;
+                padding: 20px;
+            }
+            .highlight {
+                background-color: yellow;
+            }
+            .box {
+                border: 1px solid gray;
+                padding: 10px;
+                margin: 5px 0;
+        
+            }
+        </style>
+    </head>    
 <body>
-<h1>Barbie Surprise Box </h1>
-<p>Click the box to reveal Barbie!</p>
-<div class="container" id="container">
-    <img
-        src="barbie.png"
-        id="barbie"
-        alt="Barbie Doll"
-    >
-    <div class="box" id="box">
-        <div class="ribbon"></div>
+
+<h1 id="main-title">Learning DOM Time!</h1>
+
+    <p class="info">These are my favvorite fruits.</p>
+    <p class="info">Can you tell me what are youre?</p>
+
+    <div id="container" class="box">
+        <p>Answer here: </p>
     </div>
-    <div class="lid" id="lid">
-        <div class="ribbon"></div>
-    </div>
-</div>
-<button id="openButton">OPEN BOX 💖</button>
-<h2 id="message"></h2>
-<script>
-    const container = document.getElementById("container");
-    const barbie = document.getElementById("barbie");
-    const box = document.getElementById("box");
-    const lid = document.getElementById("lid");
-    const button = document.getElementById("openButton");
-    const message = document.getElementById("message");
-    function openBox() {
-        container.classList.add("open");
-        barbie.classList.add("show");
-        message.innerHTML = "Surprise! It's Barbie! 💖";
-        button.innerHTML = "Barbie is here! 🎀";
-        box.removeEventListener("click", openBox);
-        lid.removeEventListener("click", openBox);
-        button.removeEventListener("click", openBox);
-    }
-    box.addEventListener("click", openBox);
-    lid.addEventListener("click", openBox);
-    button.addEventListener("click", openBox);
-</script>
+
+    <ul id="fruits" class="box">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Mango</li>
+    </ul>
+
+    <button id="action-btn">Click Me</button>
+
+    <script>
+        const title = document.getElementById("main-title");
+        console.log("By ID:", title);
+        title.style.color = "blue";
+
+         const infoElements = document.getElementsByClassName("info");
+         console.log("By Class Name:", infoElements);
+        infoElements[1].style.fontWeight = "bold";
+
+        const paragraphs = document.getElementsByTagName("p");
+        console.log("By Tag Name:", paragraphs);
+        paragraphs[1].style.color = "green";
+
+        const container = document.querySelector("#fruits li");
+        console.log("By querySelector:", container);
+        container.style.backgroundColor = "#e0f7fa";
+
+        const fruitItems = document.querySelectorAll("#fruits li");
+        console.log("By querySelectorAll:", fruitItems);
+        fruitItems.forEach((item) => {
+        item.style.listStyle = "square";    
+        });
+
+        title.innerHTML = "DOM Access Demo Complete!";
+
+        const newPara = document.createElement("p");
+        newPara.textContent = "We know what you did last Summer!";
+        document.body.appendChild(newPara);
+
+        const button = document.getElementById("action-btn");
+        button.addEventListener("click", () => {
+        title.classList.toggle("highlight");
+        alert("Button Clicked! Title  highlighted.");
+        });
+    </script>
 </body>
 </html>
