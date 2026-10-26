@@ -7,10 +7,10 @@
                 padding: 20px;
             }
             .highlight {
-                background-color: yellow;
+                background-color: pink;
             }
             .box {
-                border: 1px solid gray;
+                border: 1px solid lightpink;
                 padding: 10px;
                 margin: 5px 0;
         
@@ -22,7 +22,7 @@
 <h1 id="main-title">Learning DOM Time!</h1>
 
     <p class="info">These are my favvorite fruits.</p>
-    <p class="info">Can you tell me what are youre?</p>
+    <p class="info">Can you tell me what are your favorite fruits?</p>
 
     <div id="container" class="box">
         <p>Answer here: </p>
@@ -47,11 +47,12 @@
 
         const paragraphs = document.getElementsByTagName("p");
         console.log("By Tag Name:", paragraphs);
-        paragraphs[1].style.color = "green";
+        paragraphs[1].style.color = "deeppink";
 
-        const container = document.querySelector("#fruits li");
+        const container = document.querySelector("#fruits");
         console.log("By querySelector:", container);
-        container.style.backgroundColor = "#e0f7fa";
+        container.style.backgroundColor = "#f3eff2";
+        container.style.color = "purple";
 
         const fruitItems = document.querySelectorAll("#fruits li");
         console.log("By querySelectorAll:", fruitItems);
