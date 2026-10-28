@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Necklace</title>
+
+    <style>
+        body {
+            background-color: #ffe6f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            color: #d63384;
+        }
+
+        .necklace {
+            width: 220px;
+            height: 180px;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .chain {
+            width: 120px;
+            height: 120px;
+            border: 3px solid silver;
+            border-bottom: none;
+            border-radius: 100px 100px 0 0;
+            position: absolute;
+            top: 0;
+            left: 47px;
+        }
+
+        .heart {
+            position: absolute;
+            top: 65px;
+            width: 55px;
+            height: 55px;
+            background: #ff4f87;
+            transform: rotate(-45deg);
+            transition: all 1s ease;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            background: #ff4f87;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -28px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 28px;
+        }
+
+        #leftHeart {
+            left: 48px;
+            clip-path: inset(0 0 0 0);
+        }
+
+        #rightHeart {
+            left: 112px;
+            transform: rotate(-45deg);
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #d63384;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #message {
+            color: #d63384;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Heart Necklace</h1>
+    <p>Click the button to connect the two heart pieces.</p>
+
+    <div class="necklace">
+        <div class="chain"></div>
+        <div class="heart" id="leftHeart"></div>
+        <div class="heart" id="rightHeart"></div>
+    </div>
+
+    <button id="connectButton">Connect Hearts</button>
+
+    <p id="message"></p>
+
+    <script>
+        const leftHeart = document.getElementById("leftHeart");
+        const rightHeart = document.getElementById("rightHeart");
+        const connectButton = document.getElementById("connectButton");
+        const message = document.getElementById("message");
+
+        connectButton.addEventListener("click", function() {
+            leftHeart.style.left = "70px";
+            rightHeart.style.left = "98px";
+
+            message.textContent = "The hearts are connected!";
+        });
+    </script>
+
+</body>
+</html>
