@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Heart Necklace</title>
+    <title>Half Heart Necklace</title>
 
     <style>
         body {
-            background-color: #ffe6f0;
+            background: #ffe6f0;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding-top: 50px;
+            padding-top: 40px;
         }
 
         h1 {
@@ -16,68 +16,52 @@
         }
 
         .necklace {
-            width: 220px;
-            height: 180px;
-            margin: 30px auto;
             position: relative;
+            width: 300px;
+            height: 250px;
+            margin: 30px auto;
         }
 
+        /* Necklace chain */
         .chain {
-            width: 120px;
-            height: 120px;
+            position: absolute;
+            width: 130px;
+            height: 130px;
             border: 3px solid silver;
             border-bottom: none;
             border-radius: 100px 100px 0 0;
+            top: 10px;
+            left: 82px;
+        }
+
+        /* Heart pieces */
+        .piece {
             position: absolute;
-            top: 0;
-            left: 47px;
+            width: 70px;
+            height: 70px;
+            top: 100px;
+            transition: left 1s ease;
         }
 
-        .heart {
-            position: absolute;
-            top: 65px;
-            width: 55px;
-            height: 55px;
-            background: #ff4f87;
-            transform: rotate(-45deg);
-            transition: all 1s ease;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: "";
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            background: #ff4f87;
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -28px;
-            left: 0;
-        }
-
-        .heart::after {
-            top: 0;
-            left: 28px;
+        .piece svg {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         #leftHeart {
-            left: 48px;
-            clip-path: inset(0 0 0 0);
+            left: 65px;
         }
 
         #rightHeart {
-            left: 112px;
-            transform: rotate(-45deg);
+            left: 165px;
         }
 
         button {
-            padding: 12px 25px;
             background: #d63384;
             color: white;
             border: none;
+            padding: 12px 25px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 16px;
@@ -92,16 +76,40 @@
 
 <body>
 
-    <h1>Heart Necklace</h1>
-    <p>Click the button to connect the two heart pieces.</p>
+    <h1>Half-Heart Necklace</h1>
+    <p>Click the button to complete the heart.</p>
 
     <div class="necklace">
+
         <div class="chain"></div>
-        <div class="heart" id="leftHeart"></div>
-        <div class="heart" id="rightHeart"></div>
+
+        <!-- Left half of the heart -->
+        <div class="piece" id="leftHeart">
+            <svg viewBox="0 0 100 100">
+                <path d="M50 90 L12 52
+                         C-8 30 10 5 30 12
+                         C42 15 48 25 50 32 Z"
+                      fill="#ff4f87"
+                      stroke="#c2185b"
+                      stroke-width="2"/>
+            </svg>
+        </div>
+
+        <!-- Right half of the heart -->
+        <div class="piece" id="rightHeart">
+            <svg viewBox="0 0 100 100">
+                <path d="M50 90 L88 52
+                         C108 30 90 5 70 12
+                         C58 15 52 25 50 32 Z"
+                      fill="#ff4f87"
+                      stroke="#c2185b"
+                      stroke-width="2"/>
+            </svg>
+        </div>
+
     </div>
 
-    <button id="connectButton">Connect Hearts</button>
+    <button id="connectButton">Connect the Heart</button>
 
     <p id="message"></p>
 
@@ -111,11 +119,29 @@
         const connectButton = document.getElementById("connectButton");
         const message = document.getElementById("message");
 
-        connectButton.addEventListener("click", function() {
-            leftHeart.style.left = "70px";
-            rightHeart.style.left = "98px";
+        let connected = false;
 
-            message.textContent = "The hearts are connected!";
+        connectButton.addEventListener("click", function() {
+
+            if (connected === false) {
+                leftHeart.style.left = "95px";
+                rightHeart.style.left = "95px";
+
+                message.textContent = "The heart is complete!";
+                connectButton.textContent = "Separate the Heart";
+
+                connected = true;
+
+            } else {
+                leftHeart.style.left = "65px";
+                rightHeart.style.left = "165px";
+
+                message.textContent = "";
+                connectButton.textContent = "Connect the Heart";
+
+                connected = false;
+            }
+
         });
     </script>
 
